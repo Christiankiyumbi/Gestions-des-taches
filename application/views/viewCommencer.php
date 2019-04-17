@@ -10,7 +10,7 @@
     </head>
     <style>
         body{
-         background-color: #373738;   
+         background-color: #fff;
         }
         .link{
             margin: 10%;
