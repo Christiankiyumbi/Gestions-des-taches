@@ -59,9 +59,6 @@
                     <tr>
                         <td><a href="<?= site_url('accueil/creerCompte'); ?>">Créer un compte</a> </td>
                     </tr>
-                    <tr>
-                        <td><a href="#">Mot de passe oublié</a></td>                    
-                    </tr>
                 </table>
             </form>
         </center>

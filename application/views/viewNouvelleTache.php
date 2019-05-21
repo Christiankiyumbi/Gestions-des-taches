@@ -3,10 +3,8 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>todoApp | Nouvelle tâche</title>
+        <title>todoApp|Nouvelle tâche</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-        
     </head>
     <style>
 
@@ -14,6 +12,17 @@
         {
             font-size: 13px;
 
+        }
+
+        label
+        {
+            font-weight: bolder;
+        }
+
+        table
+        {
+            border: 1px solid black;
+            padding: 20px;
         }
 
         td

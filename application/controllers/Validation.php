@@ -38,7 +38,7 @@ class Validation extends CI_Controller
                 );
 
                 $this -> mainmodel -> insert_user($data);
-            redirect('accueil');
+            redirect('accueil/authentification');
         }
         else
         {
@@ -65,12 +65,13 @@ class Validation extends CI_Controller
         
         if($this -> form_validation -> run())
         {
+            // Vérifier si l'utilisateur a un compte
+            // et le connecter si c'est le cas
             redirect('accueil');
         }
         else
         {
             $this -> load -> view('viewAuthentification');
-            //redirect('accueil/viewAuthentification');
         } 
     }
     
@@ -114,7 +115,7 @@ class Validation extends CI_Controller
         }
         else
         {
-            redirect('accueil/nouvelleTache');
+            $this -> load -> view('viewNouvelleTache');
         } 
     }
 }

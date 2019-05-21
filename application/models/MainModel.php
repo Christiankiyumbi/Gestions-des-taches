@@ -8,6 +8,11 @@ class MainModel extends CI_Model
     {
         $this -> db -> insert('tache', $data);
     }
+
+    function insert_user($data)
+    {
+        $this -> db -> insert('user', $data);
+    }
     
     function fetch_data()
     {
