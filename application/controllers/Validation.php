@@ -47,7 +47,7 @@ class Validation extends CI_Controller
         } 
     }
 
-    public function connecterUtilisateur()
+    public function authentification()
     {
         $this -> form_validation -> set_rules('login', 'login', 'required|min_length[5]|max_length[255]',
             array(
@@ -69,8 +69,8 @@ class Validation extends CI_Controller
         }
         else
         {
-            $this -> load -> view('viewCommencer');
-            //redirect('accueil/commencer');
+            $this -> load -> view('viewAuthentification');
+            //redirect('accueil/viewAuthentification');
         } 
     }
     

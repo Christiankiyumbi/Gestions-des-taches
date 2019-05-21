@@ -14,10 +14,21 @@
             background-color: #fff;
         }
 
+        label
+        {
+            font-weight: bolder;    
+        }
+
+        span
+        {
+            font-size: 13px;
+        }
+
         table
         {
+            border: 1px solid #373738;
             margin-top: 15%;
-            padding: 10px;
+            padding: 20px;
         }
 
     </style>
@@ -31,24 +42,30 @@
                     <tr>
                         <td><label for="login">Login :</label></td>
                         <td><input type="text" name="login" id="login" value="<?= set_value('login')?>"></td>
-                        <td><?= form_error('login'); ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><span><?= form_error('login'); ?></span></td>
                     </tr>
                     <tr>
                         <td><label for="pwd">Password :</label></td>
                         <td><input type="text" name="pwd"></td>
-                        <td><?= form_error('pwd'); ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><span><?= form_error('pwd'); ?></span></td>
                     </tr>
                     <tr>
                         <td><label for="confirmation">Confirmation :</label></td>
                         <td><input type="text" name="confirmation"></td>
-                        <td><?= form_error('confirmation'); ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><span><?= form_error('confirmation'); ?></span></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td><input type="submit" value="Valider"></td>
                     </tr>
                     <tr>
-                        <td><a href="<?= site_url('accueil/commencer'); ?>">Retour</a></td>
+                        <td><a href="<?= site_url('accueil/authentification'); ?>">Retour</a></td>
                     </tr>
                 </table>
             </form>

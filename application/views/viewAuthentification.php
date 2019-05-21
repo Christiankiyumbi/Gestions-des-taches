@@ -14,29 +14,43 @@
             background-color: #fff;
         }
 
+        label
+        {
+            font-weight: bolder;
+        }
+        span
+        {
+            font-size: 13px;
+        }
+
         table
         {
+            border: 1px solid #373738;
             margin-top: 15%;
-            padding: 10px;
+            padding: 20px;
         }
 
     </style>
     
     <body>
         <center>
-            <form action="<?= site_url('validation/connecterUtilisateur'); ?>" method="post">
+            <form action="<?= site_url('validation/authentification'); ?>" method="post">
             
                 <table>
                 <caption>Connexion</caption>
                     <tr>
                         <td><label for="login">Login :</label></td>
                         <td><input type="text" name="login" id="login" value="<?= set_value('login')?>"></td>
-                        <td><?= form_error('login'); ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><span><?= form_error('login'); ?></span></td>
                     </tr>
                     <tr>
                         <td><label for="pwd">Password : </label></td>
                         <td><input type="text" name="pwd"></td>
-                        <td><?= form_error('pwd'); ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><span><?= form_error('pwd'); ?></span></td>
                     </tr>
                     <tr>
                         <td></td>

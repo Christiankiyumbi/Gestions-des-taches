@@ -9,10 +9,20 @@
         
     </head>
     <style>
-        td{
+
+        span
+        {
+            font-size: 13px;
+
+        }
+
+        td
+        {
             padding: 7px;
         }
-        .link{
+
+        .link
+        {
             margin: 10%;
         }
     </style>
@@ -23,7 +33,10 @@
                     <caption>Nouvelle tâche</caption>
                     <tr>
                         <td><label for="description">Description:</label></td>
-                        <td><input type="text" name="description" required <?= form_error('description');?> > </td>
+                        <td><input type="text" name="description" required> </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><span><?= form_error('description'); ?></span></td>
                     </tr>
                     <tr>
                         <td><label for="etat">Etat:</label></td>
@@ -36,7 +49,7 @@
                     </tr>
                     <tr>
                         <td><label for="date_creation">Date création:</label></td>
-                        <td><input type="date" name="date_creation" id="date_creation" required <?= form_error('heureFin');?> ></td>
+                        <td><input type="date" name="date_creation" id="date_creation" required ></td>
                     </tr>
                     <tr>
                         <td><input type="submit" value="Créer"></td>

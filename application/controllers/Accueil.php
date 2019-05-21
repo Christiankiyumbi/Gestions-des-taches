@@ -26,9 +26,9 @@ class Accueil extends CI_Controller
 		$this -> load -> view('viewCreerCompte');
 	}
 
-	public function commencer()
+	public function authentification()
 	{
-		$this -> load -> view('viewCommencer');
+		$this -> load -> view('viewAuthentification');
 	}
 
 	public function modifierTache()

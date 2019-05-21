@@ -30,7 +30,7 @@
                     <li><a href="<?= site_url('accueil/nouvelleTache');?>">Nouvelle tâche</a></li>
                     <li><a href="#">Tâches effectué(es)</a></li>
                     <li><a href="#">Tâches en cours</a></li>
-                    <li><a href="<?= site_url('accueil/commencer'); ?>">Fermer</a></li>
+                    <li><a href="<?= site_url('accueil/authentification'); ?>">Fermer</a></li>
                 </ul>
             </nav>
             <table>

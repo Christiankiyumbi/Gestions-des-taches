@@ -7,6 +7,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <style>
+
+        span
+        {
+            font-size: 13px;
+
+        }
         
         td{
             padding: 7px;
@@ -34,7 +40,10 @@
                                 <caption>Modifer tâche</caption>
                                 <tr>
                                     <td><label for="description">Description :</label></td>
-                                    <td><input type="text" name="description" value="<?= $row -> description; ?>" required <?= form_error('description');?> > </td>
+                                    <td><input type="text" name="description" value="<?= $row -> description; ?>" required > </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><span><?= form_error('description'); ?></span></td>
                                 </tr>
                                 <tr>
                                     <td><label for="etat">Etat actuel :</label></td>
