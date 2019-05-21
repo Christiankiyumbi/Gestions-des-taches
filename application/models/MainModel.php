@@ -1,25 +1,30 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MainModel extends CI_Model {
+class MainModel extends CI_Model 
+{
 
-    function insert_data($data){
-        $this -> db -> insert('tabletaches', $data);
+    function insert_data($data)
+    {
+        $this -> db -> insert('tache', $data);
     }
-
-    function fetch_data(){
-        $query = $this -> db -> query('SELECT * FROM tabletaches ORDER BY idTache DESC');
+    
+    function fetch_data()
+    {
+        $query = $this -> db -> query('SELECT * FROM tache ORDER BY id DESC');
         return $query;
     }
 
-    function delete_data($data){
-        $this -> db -> where('idTache', $data);
-        $this -> db -> delete('tabletaches');
+    function delete_data($data)
+    {
+        $this -> db -> where('id', $data);
+        $this -> db -> delete('tache');
     }
 
-    function print_data($data){
-        $this -> db -> where('idTache', $data);
-        $query = $this -> db -> get('tabletaches');
+    function print_data($data)
+    {
+        $this -> db -> where('id', $data);
+        $query = $this -> db -> get('tache');
         return $query;
     }
 }

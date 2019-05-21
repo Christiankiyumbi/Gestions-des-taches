@@ -22,28 +22,21 @@
                 <table class="link">
                     <caption>Nouvelle tâche</caption>
                     <tr>
-                        <td><label for="description">Description</label></td>
+                        <td><label for="description">Description:</label></td>
                         <td><input type="text" name="description" required <?= form_error('description');?> > </td>
                     </tr>
                     <tr>
-                        <td><label for="heureDebut">Heure début</label></td>
-                        <td><input type="time" name="heureDebut" required <?= form_error('heureDebut');?> ></td>
+                        <td><label for="etat">Etat:</label></td>
+                        <td>
+                            <select name="etat">
+                                <option value="0">En cours</option>
+                                <option value="1">Finie</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
-                        <td><label for="heureFin">Heure fin</label></td>
-                        <td><input type="time" name="heureFin" id="heureFin" required <?= form_error('heureFin');?> ></td>
-                    </tr>
-                    <tr>
-                        <td><label for="dateDebut">Date début</label></td>
-                        <td><input type="date" name="dateDebut" required <?= form_error('dateDebut');?>></td>
-                    </tr>
-                    <tr>
-                        <td><label for="dateFin">Date fin</label></td>
-                        <td><input type="date" name="dateFin" required <?= form_error('dateFin');?> ></td>
-                    </tr>
-                    <tr>
-                        <td><label for="commentaire">Commentaire</label></td>
-                        <td><textarea name="commentaire" id="commentaire" cols="30" rows="2" <?= form_error('commentaire');?> ></textarea></td>
+                        <td><label for="date_creation">Date création:</label></td>
+                        <td><input type="date" name="date_creation" id="date_creation" required <?= form_error('heureFin');?> ></td>
                     </tr>
                     <tr>
                         <td><input type="submit" value="Créer"></td>

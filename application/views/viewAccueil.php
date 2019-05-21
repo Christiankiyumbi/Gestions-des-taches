@@ -5,8 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>todoApp | Accueil</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-        <script src="main.js"></script>
     </head>
     <style>
         th{
@@ -30,7 +28,9 @@
             <nav>
                 <ul>
                     <li><a href="<?= site_url('accueil/nouvelleTache');?>">Nouvelle tâche</a></li>
-                    <li><a href="<?= site_url('accueil/commencer'); ?>">Quitter</a></li>
+                    <li><a href="#">Tâches effectué(es)</a></li>
+                    <li><a href="#">Tâches en cours</a></li>
+                    <li><a href="<?= site_url('accueil/commencer'); ?>">Fermer</a></li>
                 </ul>
             </nav>
             <table>
@@ -39,11 +39,8 @@
                     <tr>
                         <th>n°</th>
                         <th>Description</th>
-                        <th>Heure début</th>
-                        <th>Heure fin</th>
-                        <th>Date début</th>
-                        <th>Date fin</th>
-                        <th>Commentaire</th>
+                        <th>Etat</th>
+                        <th>Date création</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,14 +54,11 @@
                                 ?>
                                     <tr>
                                         <td> <?php echo $index; ?> </td>
-                                        <td> <?php echo $row -> descriptionTache; ?> </td>
-                                        <td> <?php echo $row -> heureDebut; ?> </td>
-                                        <td> <?php echo $row -> heureFin; ?> </td>
-                                        <td> <?php echo $row -> dateDebut; ?> </td>
-                                        <td> <?php echo $row -> dateFin; ?> </td>
-                                        <td> <?php echo $row -> commentaire; ?> </td>
-                                        <td> <a href="<?= site_url('accueil/modifierTache/'.$row -> idTache);?>">Modifier</a> </td>
-                                        <td> <a href="<?= site_url('accueil/afficherConfirmation/'.$row -> idTache);?>">Supprimer</a></td>
+                                        <td> <?php echo $row -> description; ?> </td>
+                                        <td> <?php echo $row -> etat; ?> </td>
+                                        <td> <?php echo $row -> date_creation; ?> </td>
+                                        <td> <a href="<?= site_url('accueil/modifierTache/'.$row -> id);?>">Modifier</a> </td>
+                                        <td> <a href="<?= site_url('accueil/afficherConfirmation/'.$row -> id);?>">Supprimer</a></td>
                                     </tr>
                                 <?php
                                 $index++;

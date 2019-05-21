@@ -5,8 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Confirmation</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-        <script src="main.js"></script>
     </head>
     <style>
         .link{
@@ -39,26 +37,20 @@
                 <thead>
                     <tr>
                         <th>Description</th>
-                        <th>Heure début</th>
-                        <th>Heure fin</th>
-                        <th>Date début</th>
-                        <th>Date fin</th>
-                        <th>Commentaire</th>
+                        <th>Etat</th>
+                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                         if($print_data->num_rows() > 0){
-                            foreach($print_data->result() as $row)
+                         if($fetch_data->num_rows() > 0){
+                            foreach($fetch_data->result() as $row)
                             {
                                 ?>
                                     <tr>
-                                        <td> <?php echo $row -> descriptionTache; ?> </td>
-                                        <td> <?php echo $row -> heureDebut; ?> </td>
-                                        <td> <?php echo $row -> heureFin; ?> </td>
-                                        <td> <?php echo $row -> dateDebut; ?> </td>
-                                        <td> <?php echo $row -> dateFin; ?> </td>
-                                        <td> <?php echo $row -> commentaire; ?> </td>
+                                        <td> <?php echo $row -> description; ?> </td>
+                                        <td> <?php echo $row -> etat; ?> </td>
+                                        <td> <?php echo $row -> date_creation; ?> </td>
                                     </tr>
                                 <?php
                             }
@@ -67,7 +59,7 @@
                 </tbody>
             </table>
             <div id="option">
-                <a href="<?= site_url('accueil/supprimerTache/'.$row -> idTache);?>">Supprimer</a>
+                <a href="<?= site_url('accueil/supprimerTache/'.$row -> id);?>">Supprimer</a>
              <a href="<?= site_url('accueil'); ?>">Retour</a>
             </div>
         </fieldset>

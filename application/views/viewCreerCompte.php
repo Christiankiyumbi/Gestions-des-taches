@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>todoApp|Connexion</title>
+        <title>todoApp|Inscription</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     
@@ -24,29 +24,31 @@
     
     <body>
         <center>
-            <form action="<?= site_url('validation/connecterUtilisateur'); ?>" method="post">
+            <form action="<?= site_url('validation/nouvelUtilisateur'); ?>" method="post">
             
                 <table>
-                <caption>Connexion</caption>
+                <caption>Inscription</caption>
                     <tr>
                         <td><label for="login">Login :</label></td>
                         <td><input type="text" name="login" id="login" value="<?= set_value('login')?>"></td>
                         <td><?= form_error('login'); ?></td>
                     </tr>
                     <tr>
-                        <td><label for="pwd">Password : </label></td>
+                        <td><label for="pwd">Password :</label></td>
                         <td><input type="text" name="pwd"></td>
                         <td><?= form_error('pwd'); ?></td>
                     </tr>
                     <tr>
+                        <td><label for="confirmation">Confirmation :</label></td>
+                        <td><input type="text" name="confirmation"></td>
+                        <td><?= form_error('confirmation'); ?></td>
+                    </tr>
+                    <tr>
                         <td></td>
-                        <td><input type="submit" value="Connexion"></td>
+                        <td><input type="submit" value="Valider"></td>
                     </tr>
                     <tr>
-                        <td><a href="<?= site_url('accueil/creerCompte'); ?>">Créer un compte</a> </td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">Mot de passe oublié</a></td>                    
+                        <td><a href="<?= site_url('accueil/commencer'); ?>">Retour</a></td>
                     </tr>
                 </table>
             </form>
