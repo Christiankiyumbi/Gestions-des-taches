@@ -20,6 +20,18 @@ class MainModel extends CI_Model
         return $query;
     }
 
+    function fetch_user($pwd)
+    {
+        $query = $this -> db -> query('SELECT * FROM user WHERE pwd = ' . $pwd );
+        return $query;        
+    }
+
+    function fetch_all_user()
+    {
+        $query = $this -> db -> query('SELECT * FROM user ');
+        return $query;
+    }
+
     function delete_data($data)
     {
         $this -> db -> where('id', $data);

@@ -47,7 +47,7 @@
                     </tr>
                     <tr>
                         <td><label for="pwd">Password : </label></td>
-                        <td><input type="text" name="pwd"></td>
+                        <td><input type="text" name="pwd" id="pwd"></td>
                     </tr>
                     <tr>
                         <td colspan="2"><span><?= form_error('pwd'); ?></span></td>

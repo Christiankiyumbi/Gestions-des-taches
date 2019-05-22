@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>todoApp | Accueil</title>
+        <title>todoApp|Accueil</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <style>
@@ -21,8 +21,16 @@
             text-decoration: none;
         }
 
+        .titleX
+        {
+            font-family: 'Consolas sans';
+            color: #575758;
+            font-size: 15px;
+        }
     </style>
     <body>
+        <h3>
+        </h3>
         <center>
             <h1>todoApp</h1>
             <nav>
@@ -46,9 +54,9 @@
                 <tbody>
                     <?php 
                         $index = NULL;
-                        if($fetch_data->num_rows() > 0){
+                        if($fetch_data -> num_rows() > 0){
                             $index = 1;
-                            foreach($fetch_data->result() as $row)
+                            foreach($fetch_data -> result() as $row)
                             {
                                 
                                 ?>
@@ -59,6 +67,7 @@
                                         <td> <?php echo $row -> date_creation; ?> </td>
                                         <td> <a href="<?= site_url('accueil/modifierTache/'.$row -> id);?>">Modifier</a> </td>
                                         <td> <a href="<?= site_url('accueil/afficherConfirmation/'.$row -> id);?>">Supprimer</a></td>
+                                        <td> <a href="#">Marquer comme "finie"</a></td>
                                     </tr>
                                 <?php
                                 $index++;
@@ -69,11 +78,23 @@
                             <?php
                         }
                     ?>
+                    <tr>
+                        <td colspan="4"> <span class="titleX">Tâches en cours</span> </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><hr></td>
+                    </tr>
                 </tbody>
                 <tfoot>
-
+                    <tr>
+                        <td colspan="4"><span class="titleX">Tâches achevées</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><hr></td>
+                    </tr>
                 </tfoot>
             </table>
+            
         </center>
     </body>
 </html>

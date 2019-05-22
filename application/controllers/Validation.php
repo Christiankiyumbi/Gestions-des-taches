@@ -43,7 +43,6 @@ class Validation extends CI_Controller
         else
         {
             $this -> load -> view('viewCreerCompte');
-            //redirect('accueil/creerCompte');
         } 
     }
 
@@ -65,9 +64,28 @@ class Validation extends CI_Controller
         
         if($this -> form_validation -> run())
         {
-            // Vérifier si l'utilisateur a un compte
-            // et le connecter si c'est le cas
-            redirect('accueil');
+            $login = $this -> input -> post('login');
+            $pwd = $this -> input -> post('pwd');
+            $this -> load -> model('mainmodel');
+            $data =  $this -> mainmodel -> fetch_user($pwd);
+            
+
+            if($data -> num_rows() > 0)
+            {
+                foreach($data->result() as $row)
+                {
+                    $pseudo = $row -> pseudo;
+                    $mdp =  $row -> pwd;
+                    
+                    $valid_pwd = $login == $pseudo;
+                    $valid_login = $pwd == $mdp;
+
+                    if($valid_login && $valid_pwd)
+                    {
+                        redirect('accueil');
+                    }
+                }
+            }
         }
         else
         {

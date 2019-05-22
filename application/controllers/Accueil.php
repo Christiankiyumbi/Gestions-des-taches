@@ -8,7 +8,7 @@ class Accueil extends CI_Controller
 	{
 		$this -> load -> model('mainmodel');
 		$data['fetch_data'] = $this -> mainmodel -> fetch_data();
-		$this-> load -> view('viewAccueil', $data);
+		$this -> load -> view('viewAccueil', $data);
 	}
 
 	public function nouvelleTache()
@@ -31,6 +31,7 @@ class Accueil extends CI_Controller
 		$this -> load -> view('viewAuthentification');
 	}
 
+	
 	public function modifierTache()
 	{
 		$id = $this -> uri -> segment(3);
