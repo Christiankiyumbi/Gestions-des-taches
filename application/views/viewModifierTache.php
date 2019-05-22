@@ -21,6 +21,11 @@
         .link{
             margin: 10%;
         }
+        
+        h3 
+        {
+            color: green;
+        }
 
         table
         {
@@ -29,7 +34,10 @@
         }
     </style>
     <body>
-    <center>
+        <h3 color="green">
+            <?php echo '['. $this -> session -> login . '] connecté(e)'; ?>
+        </h3>
+        <center>
             <?php
                 if($fetch_data->num_rows() > 0){
                 foreach($fetch_data->result() as $row)

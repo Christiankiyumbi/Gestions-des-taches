@@ -31,6 +31,20 @@ class Accueil extends CI_Controller
 		$this -> load -> view('viewAuthentification');
 	}
 
+	public function session()
+	{
+		$user =  $this -> input -> post('login');
+		$this -> session -> userdata('user', $user);
+		// Afficher SESSION
+		echo $this -> session -> user;
+	}
+
+	public function deconnexion()
+	{
+		$this-> session -> unset_userdata('is_connected');
+        redirect();
+	}
+
 	
 	public function modifierTache()
 	{

@@ -34,7 +34,7 @@
     
     <body>
         <center>
-            <form action="<?= site_url('validation/authentification'); ?>" method="post">
+            <form action="<?= site_url('validation/connexion'); ?>" method="post">
             
                 <table>
                 <caption>Connexion</caption>

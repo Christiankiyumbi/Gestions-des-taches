@@ -14,6 +14,12 @@
             padding: 15px;
 
         }
+
+        h3 
+        {
+            color: green;
+        }
+        
         th{
             border: 1px solid black;
             padding: 7px;
@@ -28,6 +34,9 @@
         }
     </style>
     <body>
+        <h3 color="green">
+            <?php echo '['. $this -> session -> login . '] connecté(e)'; ?>
+        </h3>
         <center>
         <fieldset class="link">
             <legend>Suppression de tâche</legend>

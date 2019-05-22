@@ -46,8 +46,9 @@ class Validation extends CI_Controller
         } 
     }
 
-    public function authentification()
+    public function connexion()
     {
+        /*
         $this -> form_validation -> set_rules('login', 'login', 'required|min_length[5]|max_length[255]',
             array(
                 'required' => 'Le champs %s est obligatoire.',
@@ -61,36 +62,39 @@ class Validation extends CI_Controller
                 'min_length' => 'Le [%s] doit contenir au moins 8 caractères.',
                 'max_length' => 'Le [%s] ne doit pas dépasser 255 caractères.'
         ));
-        
+
         if($this -> form_validation -> run())
         {
-            $login = $this -> input -> post('login');
-            $pwd = $this -> input -> post('pwd');
-            $this -> load -> model('mainmodel');
-            $data =  $this -> mainmodel -> fetch_user($pwd);
-            
-
-            if($data -> num_rows() > 0)
-            {
-                foreach($data->result() as $row)
-                {
-                    $pseudo = $row -> pseudo;
-                    $mdp =  $row -> pwd;
-                    
-                    $valid_pwd = $login == $pseudo;
-                    $valid_login = $pwd == $mdp;
-
-                    if($valid_login && $valid_pwd)
-                    {
-                        redirect('accueil');
-                    }
-                }
-            }
+           
         }
         else
         {
             $this -> load -> view('viewAuthentification');
         } 
+        */
+
+       $login = $this -> input -> post('login');
+       $pwd = $this -> input -> post('pwd');
+       $data = array('pseudo' => $login, 'pwd' => $pwd);
+
+       $this -> load -> model('mainmodel');
+       $result = $this -> mainmodel -> fetch_user($data);
+
+       if(count($result) > 0)
+       {
+           $user = $result[0];
+           $data = array('login' => $user -> pseudo, 'pwd' => $user -> pwd, 'connected' => true);
+           $this -> session -> set_userdata($data);
+           redirect('accueil');
+       }
+       else
+       {
+            $msg =  array('err_msg' => 'Login ou mot de passe incorrect.');
+            $this->session->set_flashdata($msg);
+            $form_auth = $this -> load -> view('accueil/viewAuthentification', [], true);
+            $page = array('page' => $form_auth);
+            $this->load->view('viewAuthentification', $page);
+       }
     }
     
     public function validerNouvelleTache()

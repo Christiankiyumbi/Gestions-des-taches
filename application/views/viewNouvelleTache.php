@@ -25,6 +25,11 @@
             padding: 20px;
         }
 
+        h3 
+        {
+            color: green;
+        }
+
         td
         {
             padding: 7px;
@@ -36,6 +41,9 @@
         }
     </style>
     <body>
+        <h3>
+            <?php echo '['. $this -> session -> login . '] connecté(e)'; ?>
+        </h3>
         <center>
             <form action="<?= site_url('validation/validerNouvelleTache'); ?>" method="post">
                 <table class="link">
