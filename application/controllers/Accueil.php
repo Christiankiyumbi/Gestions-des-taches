@@ -8,7 +8,8 @@ class Accueil extends CI_Controller
 	{
 		$id = $this -> session -> id;
 		$this -> load -> model('mainmodel');
-		$data['fetch_data'] = $this -> mainmodel -> fetch_data($id);
+		//$data['fetch_data'] = $this -> mainmodel -> fetch_data($id);
+		$data['fetch_data'] = $this -> mainmodel -> fetch_data_by_date($id);
 		$this -> load -> view('viewAccueil', $data);
 	}
 

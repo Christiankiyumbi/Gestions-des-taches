@@ -90,6 +90,7 @@
                             $index = 1;
                             foreach($fetch_data -> result() as $row)
                             {
+                                $id = $this -> session -> id;
                                 $en_cours = $row -> etat;
                                 if($en_cours == true)
                                 {
@@ -99,9 +100,9 @@
                                             <td> <?php echo $row -> description; ?> </td>
                                             <td> <?php echo 'finie'; ?> </td>
                                             <td> <?php echo $row -> date_creation; ?> </td>
-                                            <td colspan="2"> <a href="<?= site_url('validation/modifierTache/'.$row -> id);?>">Modifier</a> </td>
-                                            <td> <a href="<?= site_url('validation/afficherConfirmation/'.$row -> id);?>">Supprimer</a></td>
-                                            <td > <a href="<?= site_url('validation/marquerCommeFinie/'.$row -> id);?>">Marquer comme "en cours"</a></td>
+                                            <td colspan="2"> <a href="<?= site_url('validation/modifierTache/'.$row -> id . '/' . $id);?>">Modifier</a> </td>
+                                            <td> <a href="<?= site_url('validation/afficherConfirmation/'.$row -> id . '/' . $id);?>">Supprimer</a></td>
+                                            <td > <a href="<?= site_url('validation/marquerCommeEnCours/'.$row -> id . '/' . $id);?>">Marquer comme "en cours"</a></td>
                                         </tr>
                                     <?php
                                     $index++;
@@ -120,6 +121,7 @@
                     </tr>       
                 </tbody>
                 <tfoot>
+                <!--
                     <tr>
                         <th class="hide"></th>
                         <th class="hide"></th>
@@ -131,6 +133,7 @@
                             </span> 
                         </th>
                     </tr>
+                -->
                 </tfoot>
             </table>
             

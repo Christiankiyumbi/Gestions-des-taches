@@ -187,11 +187,42 @@ class Validation extends CI_Controller
         }
         else
         {
-            $msg =  array('err_msg' => 'Login ou mot de passe incorrect.');
+            $msg =  array('err_msg' => 'TODOAPP RETURN [Error].');
             $this->session->set_flashdata($msg);
-            $form_auth = $this -> load -> view('viewAuthentification', [], true);
+            $form_auth = $this -> load -> view('viewAccueil', [], true);
             $page = array('page' => $form_auth);
-            $this->load->view('viewAuthentification', $page);
+            $this->load->view('viewAccueil', $page);
+        }
+    }
+    
+    public function marquerCommeEnCours()
+	{
+        $id = $this -> uri -> segment(3);
+        $id_user = $this -> uri -> segment(4);
+        $this -> load -> model('mainmodel');
+        $result = $this -> mainmodel -> get_taches($id);
+        
+        if(count($result) > 0)
+        {
+            $user = $result[0];
+            $data = 
+                array(
+                    'id' => $id, 
+                    'id_user' => $id_user, 
+                    'description' => $user -> description,
+                    'etat' => 0, 
+                    'date_creation' => $user -> date_creation
+            );
+            $this -> mainmodel -> update_tache($id, $data);
+            redirect('accueil');
+        }
+        else
+        {
+            $msg =  array('err_msg' => 'TODOAPP RETURN [Error].');
+            $this->session->set_flashdata($msg);
+            $form_auth = $this -> load -> view('viewAccueil', [], true);
+            $page = array('page' => $form_auth);
+            $this->load->view('viewAccueil', $page);
         }
 	}
 

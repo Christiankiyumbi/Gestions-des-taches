@@ -24,6 +24,14 @@ class MainModel extends CI_Model
     }
 
     //
+    function fetch_data_by_date($id)
+    {
+        $this -> db -> where('id_user', $id);
+        $query = $this -> db -> query('SELECT * FROM tache  WHERE id_user = ' . $id . ' ORDER BY date_creation');
+        return $query;
+    }
+
+    //
     function delete_data($data)
     {
         $this -> db -> where('id', $data);
@@ -55,7 +63,7 @@ class MainModel extends CI_Model
     }
 
     /******************************************************************************** */
-   
+    /*
     function fetch_taches()
     {
         $query = $this -> db -> query('SELECT * FROM tache');
@@ -67,5 +75,5 @@ class MainModel extends CI_Model
         $query = $this -> db -> query('SELECT * FROM tache WHERE etat = ' . $en_cours);
         return $query;
     }
-
+    */
 }
