@@ -6,8 +6,9 @@ class Accueil extends CI_Controller
     
 	public function index()
 	{
+		$id = $this -> session -> id;
 		$this -> load -> model('mainmodel');
-		$data['fetch_data'] = $this -> mainmodel -> fetch_data();
+		$data['fetch_data'] = $this -> mainmodel -> fetch_data($id);
 		$this -> load -> view('viewAccueil', $data);
 	}
 
@@ -35,7 +36,6 @@ class Accueil extends CI_Controller
 	{
 		$user =  $this -> input -> post('login');
 		$this -> session -> userdata('user', $user);
-		// Afficher SESSION
 		echo $this -> session -> user;
 	}
 
@@ -43,31 +43,6 @@ class Accueil extends CI_Controller
 	{
 		$this-> session -> unset_userdata('is_connected');
         redirect();
-	}
-
-	
-	public function modifierTache()
-	{
-		$id = $this -> uri -> segment(3);
-		$this -> load -> model('mainmodel');
-		$data['fetch_data'] = $this -> mainmodel -> print_data($id);
-		$this -> load -> view('viewModifierTache', $data);
-	}
-	
-	public function afficherConfirmation()
-	{
-		$id = $this -> uri -> segment(3);
-		$this -> load -> model('mainmodel');
-		$data['fetch_data'] = $this -> mainmodel -> print_data($id);
-		$this -> load -> view('viewConfirmerSuppression', $data);
-	}
-
-	public function supprimerTache()
-	{
-		$id = $this -> uri -> segment(3);
-		$this -> load -> model('mainmodel');
-		$this -> mainmodel -> delete_data($id);
-		redirect('accueil');
 	}
 	
 }

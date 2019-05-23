@@ -14,24 +14,10 @@
             padding: 15px;
 
         }
-
-        h3 
-        {
-            color: green;
-        }
-        
-        th{
-            border: 1px solid black;
-            padding: 7px;
-        }
-        table{
-            margin: 10px;
-            font-weight: bolder;
-        }
-        #option{
-            text-align: left;
-            margin-left: 25px;
-        }
+        h3  {  color: green;  }
+        th {  border: 1px solid black;  padding: 7px;   }
+        table {   margin: 10px;  font-weight: bolder;  }
+        #option {  text-align: left;  margin-left: 25px; }
     </style>
     <body>
         <h3 color="green">
@@ -68,7 +54,7 @@
                 </tbody>
             </table>
             <div id="option">
-                <a href="<?= site_url('accueil/supprimerTache/'.$row -> id);?>">Supprimer</a>
+                <a href="<?= site_url('validation/supprimerTache/'.$row -> id);?>">Supprimer</a>
              <a href="<?= site_url('accueil'); ?>">Retour</a>
             </div>
         </fieldset>

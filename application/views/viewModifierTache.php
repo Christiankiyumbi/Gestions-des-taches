@@ -7,31 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <style>
-
-        span
-        {
-            font-size: 13px;
-
-        }
-        
-        td{
-            padding: 7px;
-        }
-        
-        .link{
-            margin: 10%;
-        }
-        
-        h3 
-        {
-            color: green;
-        }
-
-        table
-        {
-            border: 1px solid #373737;
-            padding: 15px;
-        }
+        span  {  font-size: 13px;   } 
+        td {  padding: 7px;  }
+        .link {  margin: 10%;  }
+        h3   {  color: green;  }
+        table  {  border: 1px solid #373737; padding: 15px;  }
     </style>
     <body>
         <h3 color="green">
@@ -43,7 +23,7 @@
                 foreach($fetch_data->result() as $row)
                 {
                     ?>
-                        <form action="<?= site_url('validation/validerNouvelleTache'); ?>" method="post">
+                        <form action="<?= site_url('validation/updateNouvelleTache'); ?>" method="post">
                             <table class="link">
                                 <caption>Modifer tâche</caption>
                                 <tr>

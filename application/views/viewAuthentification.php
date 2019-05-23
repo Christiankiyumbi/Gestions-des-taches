@@ -6,30 +6,16 @@
         <title>todoApp|Connexion</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    
     <style>
-        
-        body
-        {
-            background-color: #fff;
-        }
-
-        label
-        {
-            font-weight: bolder;
-        }
-        span
-        {
-            font-size: 13px;
-        }
-
+        body  {  background-color: #fff;  }
+        label {  font-weight: bolder;  }
+        span {  font-size: 13px; }
         table
         {
             border: 1px solid #373738;
             margin-top: 15%;
             padding: 20px;
         }
-
     </style>
     
     <body>
@@ -51,6 +37,11 @@
                     </tr>
                     <tr>
                         <td colspan="2"><span><?= form_error('pwd'); ?></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span><?php echo $this-> session -> err_msg; ?></span>
+                        </td>
                     </tr>
                     <tr>
                         <td></td>

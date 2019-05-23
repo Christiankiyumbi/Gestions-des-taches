@@ -36,8 +36,7 @@ class Validation extends CI_Controller
                     'pseudo' => $this -> input -> post('login'),
                     'pwd' => $this -> input -> post('pwd')                
                 );
-
-                $this -> mainmodel -> insert_user($data);
+            $this -> mainmodel -> insert_user($data);
             redirect('accueil/authentification');
         }
         else
@@ -48,7 +47,6 @@ class Validation extends CI_Controller
 
     public function connexion()
     {
-        /*
         $this -> form_validation -> set_rules('login', 'login', 'required|min_length[5]|max_length[255]',
             array(
                 'required' => 'Le champs %s est obligatoire.',
@@ -65,36 +63,39 @@ class Validation extends CI_Controller
 
         if($this -> form_validation -> run())
         {
-           
+            $login = $this -> input -> post('login');
+            $pwd = $this -> input -> post('pwd');
+            $data = array('pseudo' => $login, 'pwd' => $pwd);
+
+            $this -> load -> model('mainmodel');
+            $result = $this -> mainmodel -> get_user($data);
+
+            if(count($result) > 0)
+            {
+                $user = $result[0];
+                $data = 
+                    array(
+                            'id' => $user -> id, 
+                            'login' => $user -> pseudo, 
+                            'pwd' => $user -> pwd, 
+                            'connected' => true
+                        );
+                $this -> session -> set_userdata($data);
+                redirect('accueil');
+            }
+            else
+            {
+                $msg =  array('err_msg' => 'Login ou mot de passe incorrect.');
+                $this->session->set_flashdata($msg);
+                $form_auth = $this -> load -> view('viewAuthentification', [], true);
+                $page = array('page' => $form_auth);
+                $this->load->view('viewAuthentification', $page);
+            }
         }
         else
         {
             $this -> load -> view('viewAuthentification');
         } 
-        */
-
-       $login = $this -> input -> post('login');
-       $pwd = $this -> input -> post('pwd');
-       $data = array('pseudo' => $login, 'pwd' => $pwd);
-
-       $this -> load -> model('mainmodel');
-       $result = $this -> mainmodel -> fetch_user($data);
-
-       if(count($result) > 0)
-       {
-           $user = $result[0];
-           $data = array('login' => $user -> pseudo, 'pwd' => $user -> pwd, 'connected' => true);
-           $this -> session -> set_userdata($data);
-           redirect('accueil');
-       }
-       else
-       {
-            $msg =  array('err_msg' => 'Login ou mot de passe incorrect.');
-            $this->session->set_flashdata($msg);
-            $form_auth = $this -> load -> view('accueil/viewAuthentification', [], true);
-            $page = array('page' => $form_auth);
-            $this->load->view('viewAuthentification', $page);
-       }
     }
     
     public function validerNouvelleTache()
@@ -105,34 +106,20 @@ class Validation extends CI_Controller
                 'required' => 'Le champs %s est obligatoire.',
                 'max_length' => 'Le champs %s doit contenir au moins 255 caractères.'
             ));
-        
-            /**
-             * return string
-             * 
-             * $datestring = 'Year: %Y Month: %m Day: %d - %h:%i %a';
-             * $time = time();
-             * echo mdate($datestring, $time);
-             * 
-             * return array
-             * 
-             * $range = date_range('2012-01-01', '2012-01-15');
-             * echo "First 15 days of 2012:";
-             * foreach ($range as $date)
-             * {
-             *       echo $date."\n";
-             * }
-             */
-        
+
         if($this -> form_validation -> run())
         {
             $this -> load -> model('mainmodel');
+            $id_user = $this -> session -> id;
             $data = 
                 array(
+                    'id_user' => $id_user, 
                     'description' => $this -> input -> post('description'),
-                    'etat' => $this -> input -> post('etat'),
+                    'etat' =>  $this -> input -> post('etat'),
                     'date_creation' => $this -> input -> post('date_creation')          
                 );
-                $this -> mainmodel -> insert_tache($data);
+            
+            $this -> mainmodel -> insert_tache($data);
             redirect('accueil');
         }
         else
@@ -140,4 +127,96 @@ class Validation extends CI_Controller
             $this -> load -> view('viewNouvelleTache');
         } 
     }
+
+    public function updateNouvelleTache()
+    {
+        
+        $this -> form_validation -> set_rules('description', 'description', 'required|max_length[255]',
+            array(
+                'required' => 'Le champs %s est obligatoire.',
+                'max_length' => 'Le champs %s doit contenir au moins 255 caractères.'
+            ));
+
+        if($this -> form_validation -> run())
+        {
+            
+            $user = $this -> session -> id;
+            $result = $this -> mainmodel -> get_user($user);
+            
+            if(count($result) > 0)
+            {
+                $user = $result[0];
+                $id_user = $user -> id_user;
+                $data = 
+                    array(
+                        'id_user' => $id_user, 
+                        'description' => $this -> input -> post('description'),
+                        'etat' =>  $this -> input -> post('etat'),
+                        'date_creation' => $this -> input -> post('date_creation')          
+                    );
+                $this -> mainmodel -> update_tache($data);
+            }
+            redirect('accueil');
+        }
+        else
+        {
+            $this -> load -> view('viewNouvelleTache');
+        } 
+    }
+
+    public function marquerCommeFinie()
+	{
+        $id = $this -> uri -> segment(3);
+        $id_user = $this -> uri -> segment(4);
+        $this -> load -> model('mainmodel');
+        $result = $this -> mainmodel -> get_taches($id);
+        
+        if(count($result) > 0)
+        {
+            $user = $result[0];
+            $data = 
+                array(
+                    'id' => $id, 
+                    'id_user' => $id_user, 
+                    'description' => $user -> description,
+                    'etat' => 1, 
+                    'date_creation' => $user -> date_creation
+            );
+            $this -> mainmodel -> update_tache($id, $data);
+            redirect('accueil');
+        }
+        else
+        {
+            $msg =  array('err_msg' => 'Login ou mot de passe incorrect.');
+            $this->session->set_flashdata($msg);
+            $form_auth = $this -> load -> view('viewAuthentification', [], true);
+            $page = array('page' => $form_auth);
+            $this->load->view('viewAuthentification', $page);
+        }
+	}
+
+	
+	public function modifierTache()
+	{
+		$id = $this -> uri -> segment(3);
+		$this -> load -> model('mainmodel');
+        $data['fetch_data'] = $this -> mainmodel -> get_taches($id);
+		$this -> load -> view('viewModifierTache', $data);
+	}
+	
+	public function afficherConfirmation()
+	{
+		$id = $this -> uri -> segment(3);
+		$this -> load -> model('mainmodel');
+		$data['fetch_data'] = $this -> mainmodel -> get_taches($id);
+		$this -> load -> view('viewConfirmerSuppression', $data);
+	}
+
+	public function supprimerTache()
+	{
+		$id = $this -> uri -> segment(3);
+		$this -> load -> model('mainmodel');
+		$this -> mainmodel -> delete_data($id);
+		redirect('accueil');
+	}
 }

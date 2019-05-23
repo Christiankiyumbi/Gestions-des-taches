@@ -7,38 +7,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <style>
-
-        span
-        {
-            font-size: 13px;
-
-        }
-
-        label
-        {
-            font-weight: bolder;
-        }
-
-        table
-        {
-            border: 1px solid black;
-            padding: 20px;
-        }
-
-        h3 
-        {
-            color: green;
-        }
-
-        td
-        {
-            padding: 7px;
-        }
-
-        .link
-        {
-            margin: 10%;
-        }
+        span {  font-size: 13px;  }
+        label  {     font-weight: bolder; }
+        table   {  border: 1px solid black;  padding: 20px;  }
+        h3   {  color: green;   }
+        td {   padding: 7px;  }
+        .link  {  margin: 10%;  }
     </style>
     <body>
         <h3>
