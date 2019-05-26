@@ -19,7 +19,7 @@
             <?php echo '['. $this -> session -> login . '] connecté(e)'; ?>
         </h3>
         <center>
-            <form action="<?= site_url('validation/validerNouvelleTache'); ?>" method="post">
+            <form action="<?= site_url('tache/create_task'); ?>" method="post">
                 <table class="link">
                     <caption>Nouvelle tâche</caption>
                     <tr>

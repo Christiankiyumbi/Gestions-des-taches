@@ -8,19 +8,50 @@
     </head>
     <style>
         body  {  background-color: #fff;  }
-        label {  font-weight: bolder;  }
+        label {  font-weight: bolder; color: #474748; font-family: 'Arial sans'; }
         span {  font-size: 13px; }
+        td { padding: 3px;}
+
+        #login, #pwd
+        {
+            padding: 5px;
+            border-radius: 3px;
+            border:  1px solid #D0D0D0;
+        }
+
+        caption 
+        {
+            font-family: 'Arial sans'; 
+            color: #1E90FF; 
+            font-size: 25px; 
+            margin: 15px;
+            font-weight: bolder;
+        }
+
+        #btnConnexion
+        {
+            text-align: center;
+            border: 1px solid #1E90FF;
+            color: #fff;
+            padding: 5px;
+            padding-left: 17px;
+            padding-right: 17px;
+            background-color: #1E90FF;
+        }
+        
         table
         {
-            border: 1px solid #373738;
-            margin-top: 15%;
+            box-shadow:  0 0 18px #D0D0D0;
+            border: 1px solid #d0d0d0;
+            margin-top: 11%;
             padding: 20px;
+            font-family: 'Arial sans'; 
         }
     </style>
     
     <body>
         <center>
-            <form action="<?= site_url('validation/connexion'); ?>" method="post">
+            <form action="<?= site_url('user/connect'); ?>" method="post">
             
                 <table>
                 <caption>Connexion</caption>
@@ -45,13 +76,14 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" value="Connexion"></td>
+                        <td><input type="submit" value="Connexion" id="btnConnexion"></td>
                     </tr>
                     <tr>
-                        <td><a href="<?= site_url('accueil/creerCompte'); ?>">Créer un compte</a> </td>
+                        <td><a href="<?= site_url('accueil/creer_compte'); ?>">Créer un compte</a> </td>
                     </tr>
                 </table>
             </form>
+            <!-- Assurez-vous qu'il comporte au moins 15 caractères OU au moins 8 caractères, y compris un chiffre et une lettre minuscule . En savoir plus . -->
         </center>
     </body>
 </html>

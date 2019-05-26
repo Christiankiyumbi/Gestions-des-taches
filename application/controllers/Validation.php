@@ -128,7 +128,7 @@ class Validation extends CI_Controller
         } 
     }
 
-    public function updateNouvelleTache()
+    public function updateTache()
     {
         
         $this -> form_validation -> set_rules('description', 'description', 'required|max_length[255]',
@@ -139,23 +139,18 @@ class Validation extends CI_Controller
 
         if($this -> form_validation -> run())
         {
-            
+            $id = $this -> input -> post('id');
             $user = $this -> session -> id;
-            $result = $this -> mainmodel -> get_user($user);
-            
-            if(count($result) > 0)
-            {
-                $user = $result[0];
-                $id_user = $user -> id_user;
-                $data = 
-                    array(
-                        'id_user' => $id_user, 
-                        'description' => $this -> input -> post('description'),
-                        'etat' =>  $this -> input -> post('etat'),
-                        'date_creation' => $this -> input -> post('date_creation')          
-                    );
-                $this -> mainmodel -> update_tache($data);
-            }
+
+            $data = 
+                array(
+                    'id_user' => $user, 
+                    'description' => $this -> input -> post('description'),
+                    'etat' =>  $this -> input -> post('etat'),
+                    'date_creation' => $this -> input -> post('date_creation')          
+                );
+            $this -> load -> model('mainmodel');
+            $this -> mainmodel -> update_tache($id, $data);
             redirect('accueil');
         }
         else

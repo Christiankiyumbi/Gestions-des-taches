@@ -7,28 +7,45 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <style>
-        .link{
-            margin-top: 15%;
-            margin-left: 20%;
-            margin-right: 20%;
-            padding: 15px;
-
-        }
-        h3  {  color: green;  }
-        th {  border: 1px solid black;  padding: 7px;   }
-        table {   margin: 10px;  font-weight: bolder;  }
+        h4  {  color: green;  }
+        td { padding: 10px; padding-left: 13px; padding-right: 13px;}
+        table {   margin: 10px;  }
         #option {  text-align: left;  margin-left: 25px; }
+        
+        table
+        {
+            box-shadow:  0 0 18px #D0D0D0;
+            border: 1px solid #d0d0d0;
+            margin-top: 7%;
+            padding: 20px;
+            font-family: 'Arial sans'; 
+        }
+        caption 
+        {
+            font-family: 'Arial sans'; 
+            color: #1E90FF; 
+            font-size: 25px; 
+            margin: 15px;
+            font-weight: bolder;
+        }
+        
+
+        th 
+        {  
+            border: 1px solid #1E90FF;  
+            padding: 10px;
+            color: #fff;
+            background-color:  #1E90FF;
+        }
+        
     </style>
     <body>
-        <h3 color="green">
-            <?php echo '['. $this -> session -> login . '] connecté(e)'; ?>
-        </h3>
-        <center>
-        <fieldset class="link">
-            <legend>Suppression de tâche</legend>
-            <label for="question">Voulez-vous supprimer cette tâche ?</label>
-                                        
+        <h4 color="green">
+            <?php echo $this -> session -> login . ' (online)'; ?>
+        </h4>
+        <center>     
             <table>
+                <caption>Voulez-vous supprimer cette tâche ?</caption>
                 <thead>
                     <tr>
                         <th>Description</th>
@@ -38,26 +55,46 @@
                 </thead>
                 <tbody>
                     <?php
-                         if($fetch_data->num_rows() > 0){
-                            foreach($fetch_data->result() as $row)
-                            {
+                        if(count($task) > 0)
+                        {
+                            //foreach($task -> result() as $row)
+                            //{
+                                $data = $task[0];
                                 ?>
                                     <tr>
-                                        <td> <?php echo $row -> description; ?> </td>
-                                        <td> <?php echo $row -> etat; ?> </td>
-                                        <td> <?php echo $row -> date_creation; ?> </td>
+                                        <td> <?php echo $data -> description; ?> </td>
+                                        <td> 
+                                            <?php
+                                                $etat = $data -> etat;
+                                                if($etat == 1)
+                                                {
+                                                    echo 'fini';
+                                                } 
+                                                if($etat == 0)
+                                                {
+                                                    echo 'en cours';
+                                                }?> 
+                                        </td>
+                                        <td> <?php echo $data -> date_creation; ?> </td>
                                     </tr>
                                 <?php
-                            }
-                        }
                     ?>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <div id="option">
+                                <a href="<?= site_url('tache/delete_task/'.$data -> id);?>">Supprimer</a>
+                                <a href="<?= site_url('accueil'); ?>">Retour</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+                <?php  //}
+            }
+            ?>
             </table>
-            <div id="option">
-                <a href="<?= site_url('validation/supprimerTache/'.$row -> id);?>">Supprimer</a>
-             <a href="<?= site_url('accueil'); ?>">Retour</a>
-            </div>
-        </fieldset>
+            
         </center>    
     </body>
 </html>

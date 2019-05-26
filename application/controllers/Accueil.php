@@ -8,24 +8,28 @@ class Accueil extends CI_Controller
 	{
 		$id = $this -> session -> id;
 		$this -> load -> model('mainmodel');
-		//$data['fetch_data'] = $this -> mainmodel -> fetch_data($id);
-		$data['fetch_data'] = $this -> mainmodel -> fetch_data_by_date($id);
+		$data['tasks'] = $this -> mainmodel -> get_tasks_by_date($id);
 		$this -> load -> view('viewAccueil', $data);
 	}
 
-	public function nouvelleTache()
+	public function nouvelle_tache()
 	{
 		$this -> load -> view('viewNouvelleTache');
 	}
 
-	public function nouvelleTacheSimultanee()
-	{
-		$this -> load -> view('viewTachesSimultanees');
-	}
-
-	public function creerCompte()
+	public function creer_compte()
 	{
 		$this -> load -> view('viewCreerCompte');
+	}
+
+	public function modify_task()
+	{
+		$this -> load -> view('viewModifierTache');
+	}
+
+	public function task_confirmation()
+	{
+		$this -> load -> view('viewConfirmerSuppression');
 	}
 
 	public function authentification()
@@ -40,10 +44,5 @@ class Accueil extends CI_Controller
 		echo $this -> session -> user;
 	}
 
-	public function deconnexion()
-	{
-		$this-> session -> unset_userdata('is_connected');
-        redirect();
-	}
 	
 }
