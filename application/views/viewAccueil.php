@@ -7,6 +7,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <style>
+
+        caption { color : #575758; padding: 10px;}
+        table {  margin-top: 2%; }
+        .secondary { font-size : 12px; text-decoration: underline;}
+        li { display: inline;  padding: 15px;  }
+        .hide { border: none; }
+        nav { text-align:center;}
+
         th 
         {
             color : #fff;
@@ -18,20 +26,19 @@
             padding-right : 35px;
         }
         
-        li { display: inline;  padding: 15px;  }
-        .hide { border: none;}
         .menu 
         { 
             color: #fff;
             background-color: #1E90FF;
             border: 1px solid #1E90FF;
             text-align: center;
-            text-decoration: none; 
+            font-size: 0.8em;
+            text-decoration: none;
             padding: 5px;
             padding-left: 17px;
             padding-right: 17px;
         }
-        h4  { color: green; }
+        
         a 
         { 
             text-decoration: none; 
@@ -40,29 +47,58 @@
             font-weight: bolder;
         }
 
-        caption { color : #575758; padding: 10px;}
-        table {  margin-top: 3%; }
-        .secondary { font-size : 12px; }
-        
         .titleX
         {
             font-family: 'Consolas sans';
             color: #575758;
             font-size: 15px;
         }
-    </style>
+
+        #todoapp
+        {
+            text-align: center;
+            color: #575758;   
+            font-weight: bolder;
+            font-size: 35px;
+        }
+
+        #connect
+        {
+            text-align: right;
+            color: #878788;    
+        }    
+
+        body
+        {
+            background-color: #f0f0f0;
+            font-family: "Arial";
+        }
+
+        center 
+        {
+            background-color: white;
+            box-shadow:  0 0 18px #D0D0D0;
+            padding: 5px;
+            margin-left:30px;
+            margin-right:30px;
+            padding-bottom:15%;
+        }
+        </style>
     <body>
-        <h4 color="green">
+        <h1 id="todoapp">todoApp</h1>
+        <h4 id="connect">
             <?php echo $this -> session -> login . ' (online)'; ?>
         </h4>
+        <nav>
+            <ul>
+                <li><a class="menu" href="<?= site_url('accueil/nouvelle_tache');?>">Nouvelle tâche</a></li>
+                <li><a class="menu" href="<?= site_url('user/deconnexion'); ?>">Déconnexion</a></li>
+                <li><a class="menu" href="<?= site_url('accueil/about'); ?>">A propos</a></li>
+            </ul>
+        </nav>
         <center>
-            <h1>todoApp</h1>
-            <nav>
-                <ul>
-                    <li><a class="menu" href="<?= site_url('accueil/nouvelle_tache');?>">Nouvelle tâche</a></li>
-                    <li><a class="menu" href="<?= site_url('user/deconnexion'); ?>">Déconnexion</a></li>
-                </ul>
-            </nav>
+            
+        
             <table>
                 <caption>Liste des tâches</caption>
                 <thead>

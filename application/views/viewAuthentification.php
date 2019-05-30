@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <style>
-        body  {  background-color: #fff;  }
+        body  {  background-color: #f0f0f0;  }
         label {  font-weight: bolder; color: #474748; font-family: 'Arial sans'; }
         span {  font-size: 13px; }
         td { padding: 3px;}
@@ -41,10 +41,11 @@
         
         table
         {
+            background-color: #fff; 
             box-shadow:  0 0 18px #D0D0D0;
             border: 1px solid #d0d0d0;
-            margin-top: 11%;
-            padding: 20px;
+            margin-top: 10%;
+            padding: 30px;
             font-family: 'Arial sans'; 
         }
     </style>
@@ -64,7 +65,7 @@
                     </tr>
                     <tr>
                         <td><label for="pwd">Password : </label></td>
-                        <td><input type="text" name="pwd" id="pwd"></td>
+                        <td><input type="password" name="pwd" id="pwd"></td>
                     </tr>
                     <tr>
                         <td colspan="2"><span><?= form_error('pwd'); ?></span></td>

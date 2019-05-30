@@ -13,6 +13,8 @@
         td {   padding: 7px;  }
         .link  {  margin: 7%;  }
 
+        *{font-family:"Arial";}
+
         #etat, #date_creation, #description
         {
             padding: 5px;
@@ -45,7 +47,7 @@
             box-shadow:  0 0 18px #D0D0D0;
             border: 1px solid #d0d0d0;
             margin-top: 10%;
-            padding: 20px;
+            padding: 35px;
             font-family: 'Arial sans'; 
         }
         

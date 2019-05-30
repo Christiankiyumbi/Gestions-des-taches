@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <style>
+        *{font-family:"Arial";}
         span  {  font-size: 13px;   } 
         td {  padding: 7px;  }
         .link {  margin: 7%;  }

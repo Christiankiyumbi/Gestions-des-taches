@@ -37,6 +37,11 @@ class Accueil extends CI_Controller
 		$this -> load -> view('viewAuthentification');
 	}
 
+	public function about()
+	{
+		$this -> load -> view('viewAPropos');
+	}
+
 	public function session()
 	{
 		$user =  $this -> input -> post('login');

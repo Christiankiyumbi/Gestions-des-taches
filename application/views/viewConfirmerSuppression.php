@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <style>
+        *{font-family:"Arial";}
         h4  {  color: green;  }
         td { padding: 10px; padding-left: 13px; padding-right: 13px;}
         table {   margin: 10px;  }
